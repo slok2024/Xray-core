@@ -701,9 +701,11 @@ func (c *TLSConfig) Build() (proto.Message, error) {
 	}
 	config.RejectUnknownSni = c.RejectUnknownSNI
 	config.MasterKeyLog = c.MasterKeyLog
+
 	if c.AllowInsecure {
 			config.AllowInsecure = true
 		}
+		
 	if c.PinnedPeerCertSha256 != "" {
 		for v := range strings.SplitSeq(c.PinnedPeerCertSha256, ",") {
 			v = strings.TrimSpace(v)
